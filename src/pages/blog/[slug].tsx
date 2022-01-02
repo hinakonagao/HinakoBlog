@@ -151,13 +151,20 @@ const RenderPost = ({ post, redirect, preview }) => {
         </div>
       )}
       <div className={blogStyles.post}>
-        <h1>{post.Page || ''}</h1>
-        {post.Authors.length > 0 && (
-          <div className="authors">By: {post.Authors.join(' ')}</div>
-        )}
-        {post.Date && (
-          <div className="posted">Posted: {getDateStr(post.Date)}</div>
-        )}
+        <h1 className={blogStyles.slugTitle}>{post.Page}</h1>
+        <div className={blogStyles.slugInfo}>
+          {post.Category && (
+            <div className={blogStyles.slugCategory}>{post.Category}</div>
+          )}
+          {post.Date && (
+            <div className={blogStyles.slugPosted}>{getDateStr(post.Date)}</div>
+          )}
+          {post.Updated && (
+            <div className={blogStyles.slugUpdated}>
+              {getDateStr(post.Updated)}
+            </div>
+          )}
+        </div>
 
         <hr />
 
@@ -476,6 +483,11 @@ const RenderPost = ({ post, redirect, preview }) => {
           }
           return toRender
         })}
+
+        {/* 戻るボタン */}
+        <Link href="/blog">
+          <button className={blogStyles.backButton}>&gt;&gt;Back</button>
+        </Link>
       </div>
     </>
   )

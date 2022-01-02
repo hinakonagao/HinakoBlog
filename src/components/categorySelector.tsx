@@ -2,12 +2,12 @@
 
 import blogStyles from '../styles/blog.module.css'
 
-export default function CategorySelector({ category, selectPosts }) {
+export default function CategorySelector({ category, selectCategory }) {
   switch (category) {
     case 'Web':
       return (
         <button
-          onClick={() => selectPosts(category)}
+          onClick={() => selectCategory(category)}
           className={blogStyles.categorySelectorWeb}
         >
           {category}
@@ -19,7 +19,7 @@ export default function CategorySelector({ category, selectPosts }) {
     case 'JavaScript':
       return (
         <button
-          onClick={() => selectPosts(category)}
+          onClick={() => selectCategory(category)}
           className={blogStyles.categorySelectorPrograming}
         >
           {category}
@@ -29,7 +29,7 @@ export default function CategorySelector({ category, selectPosts }) {
     case 'Docker':
       return (
         <button
-          onClick={() => selectPosts(category)}
+          onClick={() => selectCategory(category)}
           className={blogStyles.categorySelectorOthers}
         >
           {category}
