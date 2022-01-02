@@ -1,4 +1,5 @@
-下記URLのNotion Blogを使用した、個人ブログサイトです。
+下記URLのNotion Blogを使用した個人ブログサイトです。
+　
 https://notion-blog.vercel.app/
 
 ## Credits
