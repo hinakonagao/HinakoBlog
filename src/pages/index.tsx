@@ -1,5 +1,7 @@
 import Header from '../components/header'
 import sharedStyles from '../styles/shared.module.css'
+// React icon
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 
 export default function Index() {
   console.log('index')
@@ -15,7 +17,15 @@ export default function Index() {
         {/* <FaGithub />
         <FaTwitter /> */}
         <div className={sharedStyles.profileText}>
-          <h3 className={sharedStyles.profileName}>Hinako</h3>
+          <h3 className={sharedStyles.profileName}>
+            Hinako
+            <a href="https://twitter.com/napi_nami">
+              <FaTwitter className={sharedStyles.twitter} />
+            </a>
+            <a href="https://github.com/hinakonagao">
+              <FaGithub className={sharedStyles.github} />
+            </a>
+          </h3>
           <p>・　プログラミング好き関西在住の24歳</p>
           <p>・　Webエンジニア1年生</p>
           <p>・　学習強化中：Laravel, React, Next.js, TypeScript</p>

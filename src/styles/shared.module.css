@@ -17,6 +17,27 @@
   font-weight: 500;
 }
 
+.twitter {
+  color: cornflowerblue;
+  width: 30px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.github {
+  width: 30px;
+  padding-top: 5px;
+}
+
+.twitter:hover {
+  opacity: 0.7;
+}
+
+.github:hover {
+  color: #333;
+  opacity: 0.7;
+}
+
 .profileImg {
   width: 200px;
 }

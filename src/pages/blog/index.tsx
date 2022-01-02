@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+// React icon
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 // notion
 import {
   getBlogLink,
@@ -13,6 +15,7 @@ import getBlogIndex from '../../lib/notion/getBlogIndex'
 // styles
 import blogStyles from '../../styles/blog.module.css'
 import sharedStyles from '../../styles/shared.module.css'
+import footer from '../../styles/footer.module.css'
 //components
 import Header from '../../components/header'
 import CategoryIcon from '../../components/categoryIcon'
@@ -55,6 +58,11 @@ const Index = ({ posts = [], preview }) => {
   // 記事を新着順に並び替え
   posts.sort((a, b) => b.Date - a.Date)
   const [showPosts, setShowPosts] = useState(posts)
+  console.log(posts)
+  console.log(new Date(posts[0].Date).getMonth())
+
+  // 月別
+  const monthlyPosts = posts.map((post) => {})
 
   // カテゴリーリスト
   const categories = [
@@ -69,8 +77,17 @@ const Index = ({ posts = [], preview }) => {
 
   // カテゴリー絞り込み
   const selectPosts = (category) => {
-    const selectedPosts = posts.filter((post) => post.Category === category)
-    setShowPosts(selectedPosts)
+    if (category === 'all') {
+      setShowPosts(posts)
+    } else {
+      const selectedPosts = posts.filter((post) => post.Category === category)
+      setShowPosts(selectedPosts)
+    }
+    // ページ最上部へ
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
   }
 
   return (
@@ -83,7 +100,7 @@ const Index = ({ posts = [], preview }) => {
         <div className={blogStyles.categorySelector}>
           <h3>Category：</h3>
           <button
-            onClick={() => setShowPosts(posts)}
+            onClick={() => selectPosts('all')}
             className={blogStyles.categorySelectorAll}
           >
             All
@@ -130,6 +147,41 @@ const Index = ({ posts = [], preview }) => {
             </div>
           )
         })}
+      </div>
+      <div className={footer.container}>
+        <div className={footer.footer}>
+          <div className={footer.category}>
+            <h3>Category</h3>
+            <div
+              onClick={() => selectPosts('all')}
+              className={footer.categorySelector}
+            >
+              All
+            </div>
+            {categories.map((category) => (
+              <div
+                onClick={() => selectPosts(category)}
+                className={footer.categorySelector}
+              >
+                {category}
+              </div>
+            ))}
+          </div>
+          <div className={footer.monthly}>
+            <h3>Monthly</h3>
+            <div onClick={() => {}} className={footer.categorySelector}>
+              Coming soon...
+            </div>
+          </div>
+          <div className={footer.sns}>
+            <a href="https://twitter.com/napi_nami">
+              <FaTwitter className={sharedStyles.twitter} />
+            </a>
+            <a href="https://github.com/hinakonagao">
+              <FaGithub className={sharedStyles.github} />
+            </a>
+          </div>
+        </div>
       </div>
     </>
   )

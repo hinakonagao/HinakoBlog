@@ -79,7 +79,7 @@
 .categorySelector h3,
 .categorySelector button {
   display: inline-block;
-  font-family: 'Lato', 'Noto Sans JP', sans-serif;
+  font-family: 'Alegreya Sans SC', 'Quicksand', sans-serif;
   font-weight: bold;
   margin: 0 3px;
   padding: 2px 6px;
@@ -87,12 +87,13 @@
 
 .categorySelector h3 {
   letter-spacing: 0.07rem;
+  font-size: 16px;
 }
 
 .categorySelector button {
   font-size: 14px;
   border-radius: 2px;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.05rem;
 }
 
 .categorySelector button:hover {
