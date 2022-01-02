@@ -1,5 +1,18 @@
+.titleBlog {
+  font-family: 'Alegreya Sans SC', 'Quicksand', sans-serif;
+  font-size: 40px;
+}
+
+.blogHeader {
+  background-image: url('/blogHeader.jfif');
+}
+
 .blogIndex {
   padding: 0 5%;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .blogIndex h1 {
@@ -58,27 +71,123 @@
   margin-right: 6px;
 }
 
+.categorySelector {
+  margin: 30px auto 15px auto;
+  padding: 0 3%;
+}
+
+.categorySelector h3,
+.categorySelector button {
+  display: inline-block;
+  font-family: 'Lato', 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  margin: 0 3px;
+  padding: 2px 6px;
+}
+
+.categorySelector h3 {
+  letter-spacing: 0.07rem;
+}
+
+.categorySelector button {
+  font-size: 14px;
+  border-radius: 2px;
+  letter-spacing: 0.6px;
+}
+
+.categorySelector button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.categorySelectorAll {
+  border: 1px solid #888;
+}
+
+.categorySelectorWeb {
+  background-color: #f0fff0;
+  border: 1px solid #888;
+}
+
+.categorySelectorPrograming {
+  background-color: #fffff0;
+  border: 1px solid #888;
+}
+
+.categorySelectorOthers {
+  background-color: #fdf5e6;
+  border: 1px solid #888;
+}
+
 .noPosts {
   text-align: center;
 }
 
-.postPreview {
-  max-width: 600px;
-  margin: 10px auto;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+/* 記事が奇数の場合のための幅調整 */
+.blogIndex::after {
+  content: '';
+  display: block;
+  width: 45%;
+  margin: 20px;
 }
 
-.postPreview:last-child {
-  border-bottom: none;
+.postPreview {
+  position: relative;
+  box-sizing: border-box;
+  width: 45%;
+  min-width: 350px;
+  height: 150px;
+  margin: 20px;
+  border: 1px solid #777;
+  padding: 20px 20px 10px 20px;
+  background: #ffffffe6;
+  box-shadow: 2px 2px 4px #888;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.postPreview:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.postPreview a:hover {
+  color: #333;
 }
 
 .postPreview h3,
 .post h1 {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
+.post {
+  background-color: #fff;
+}
+
 .post h1 {
-  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: start;
+  font-size: 26px;
+  font-family: '游ゴシック体', 'Yu Gothic', YuGothic,
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  font-weight: bold;
+  letter-spacing: normal;
+}
+
+.post h2 {
+  font-family: '游ゴシック体', 'Yu Gothic', YuGothic,
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: normal;
+}
+
+.post h3 {
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .post :global(h2),
@@ -123,6 +232,35 @@
   margin-bottom: 0.5em;
 }
 
+.categoryIconWeb {
+  font-size: 40px;
+  color: #666;
+  margin-right: 10px;
+}
+.categoryIconLaravel {
+  font-size: 40px;
+  color: #ff0000;
+  margin-right: 5px;
+}
+
+.categoryIconPhp {
+  font-size: 45px;
+  color: #6a5acd;
+  margin-right: 10px;
+}
+
+.categoryIconReact {
+  font-size: 40px;
+  color: #00bfff;
+  margin-right: 5px;
+}
+
+.categoryIconJavaScript {
+  font-size: 35px;
+  color: #ffd700;
+  margin-right: 10px;
+}
+
 .post {
   max-width: calc(600px + 10%);
   margin: 0 auto;
@@ -135,6 +273,51 @@
 
 .post :global(a + p) {
   margin-top: 0;
+}
+
+.blogInfo {
+  position: absolute;
+  bottom: 5px;
+  width: 92%;
+}
+
+.posted,
+.updated,
+.category {
+  display: inline-block;
+}
+
+.posted {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+}
+
+.category {
+  padding: 0.8px 5.5px;
+  font-size: 14px;
+}
+
+.slugInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slugTitle {
+  font-size: 25px;
+}
+
+.slugCategory {
+  font-size: 15px;
+}
+
+.slugPosted {
+  font-size: 13px;
+}
+
+.slugUpdated {
+  font-size: 13px;
 }
 
 .bookmark {
@@ -248,4 +431,15 @@
   border-radius: 1px;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 600px) {
+  .blogIndex {
+    padding: 0;
+  }
+
+  .postPreview {
+    width: 95%;
+    min-width: 200px;
+  }
 }

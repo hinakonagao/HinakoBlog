@@ -1,11 +1,88 @@
-.layout img {
-  margin: auto;
-  max-width: 98%;
-  display: block;
-  height: auto;
+.titleProfile {
+  font-family: 'Alegreya Sans SC', 'Quicksand', sans-serif;
+  font-size: 40px;
 }
 
-.layout h1,
-.layout h2 {
-  text-align: center;
+.profile {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  margin: 30px auto 60px auto;
+}
+
+.profileName {
+  display: inline-block;
+  font-family: 'Alegreya Sans SC', 'Quicksand', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.profileImg {
+  width: 200px;
+}
+
+.profile img {
+  width: 100%;
+  height: auto;
+  padding: 30px 0;
+  clear: both;
+  display: block;
+  zoom: 1;
+}
+
+.profileText {
+  margin-left: 40px;
+}
+
+.titleCareer {
+  font-family: 'Alegreya Sans SC', 'Quicksand', sans-serif;
+  font-size: 40px;
+}
+
+.career h1 {
+  margin-bottom: 40px;
+}
+
+.career {
+  width: 750px;
+  max-width: 70%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .profile {
+    width: 85%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .profileImg {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  .profileText {
+    margin-left: 0;
+  }
+
+  .profile img {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .profile p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .career {
+    width: 85%;
+    max-width: 350px;
+  }
+
+  .titleCareer {
+    margin-top: 70px;
+  }
 }
