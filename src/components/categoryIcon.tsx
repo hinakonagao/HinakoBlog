@@ -11,11 +11,13 @@ export default function CategoryIcon({ category }) {
       {category === 'Web' && (
         <MdComputer className={blogStyles.categoryIconWeb} />
       )}
-      {category === 'Laravel' && (
-        <FaLaravel className={blogStyles.categoryIconLaravel} />
+      {category === 'PHP/Laravel' && (
+        <>
+          <FaPhp className={blogStyles.categoryIconPhp} />
+          <FaLaravel className={blogStyles.categoryIconLaravel} />
+        </>
       )}
-      {category === 'PHP' && <FaPhp className={blogStyles.categoryIconPhp} />}
-      {category === 'React' && (
+      {category === 'React/Next.js' && (
         <FaReact className={blogStyles.categoryIconReact} />
       )}
       {category === 'TypeScript' && <SiTypescript />}

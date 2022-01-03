@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 // React icon
 import { FaGithub, FaTwitter } from 'react-icons/fa'
+import { GiMagnifyingGlass } from 'react-icons/gi'
 // notion
 import {
   getBlogLink,
@@ -45,31 +46,48 @@ export async function getStaticProps({ preview }) {
     post.Authors = post.Authors.map((id) => users[id].full_name)
   })
 
-  return {
-    props: {
-      preview: preview || false,
-      posts,
-    },
-    revalidate: 10,
-  }
-}
-
-const Index = ({ posts = [], preview }) => {
-  // 記事を新着順に並び替え
-  posts.sort((a, b) => b.Date - a.Date)
-  const [showPosts, setShowPosts] = useState(posts)
-  console.log(posts)
-
   // カテゴリーリスト
   const categories = [
     'Web',
     'PHP/Laravel',
     'React/Next.js',
-    'TypeScript',
+    // 'TypeScript',
     'JavaScript',
-    'Git',
-    'Docker',
+    // 'Git',
+    // 'Docker',
   ]
+  // const categories = []
+  // posts.map((post) => {
+  //   if (categories.indexOf(post.Category) == -1) {
+  //     categories.push(post.Category)
+  //   }
+  // })
+
+  // 年月リスト
+  const months = []
+  posts.map((post) => {
+    if (months.indexOf(post.Month) == -1) {
+      months.push(post.Month)
+    }
+  })
+
+  return {
+    props: {
+      preview: preview || false,
+      posts,
+      categories,
+      months,
+    },
+    revalidate: 10,
+  }
+}
+
+const Index = ({ posts = [], preview, categories, months }) => {
+  // 記事を新着順に並び替え
+  posts.sort((a, b) => b.Date - a.Date)
+
+  const [showPosts, setShowPosts] = useState(posts)
+  const [inputValue, setInputValue] = useState()
 
   // カテゴリー絞り込み
   const selectCategory = (category) => {
@@ -80,33 +98,42 @@ const Index = ({ posts = [], preview }) => {
       setShowPosts(selectedPosts)
     }
 
-    // ページ最上部へ
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     })
   }
 
-  // 年月リスト
-  const months = []
-  posts.map((post) => {
-    if (months.indexOf(post.Month) == -1) {
-      months.push(post.Month)
-    }
-  })
-
-  console.log(months)
-
-  // 月ごと絞りこみ
+  // 月ごと絞り込み
   const selectMonth = (month) => {
     const selectedPosts = posts.filter((post) => post.Month === month)
     setShowPosts(selectedPosts)
 
-    // ページ最上部へ
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     })
+  }
+
+  // 検索フォーム
+  const search = (value) => {
+    if (value !== '') {
+      const serchedPosts = posts.filter(
+        (post) =>
+          post.Category.toUpperCase().indexOf(value.toUpperCase()) !== -1 ||
+          post.Page.toUpperCase().indexOf(value.toUpperCase()) !== -1
+      )
+      setShowPosts(serchedPosts)
+      return
+    }
+
+    setShowPosts(posts)
+    return
+  }
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value)
+    search(e.target.value)
   }
 
   return (
@@ -131,6 +158,15 @@ const Index = ({ posts = [], preview }) => {
               key={category}
             />
           ))}
+        </div>
+
+        {/* 検索フォーム */}
+        <div className={blogStyles.serchForm}>
+          <h3>Search</h3>
+          <div>
+            <GiMagnifyingGlass />
+          </div>
+          <input type="text" value={inputValue} onChange={handleInputChange} />
         </div>
       </div>
 
@@ -167,6 +203,8 @@ const Index = ({ posts = [], preview }) => {
           )
         })}
       </div>
+
+      {/* blog-footer */}
       <div className={footer.container}>
         <div className={footer.footer}>
           {/* カテゴリー絞り込み */}

@@ -36,4 +36,6 @@ export default function CategorySelector({ category, selectCategory }) {
         </button>
       )
   }
+  // return しておかないと初期レンダリングでエラーになる
+  return null
 }
