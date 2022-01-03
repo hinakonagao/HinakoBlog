@@ -87,7 +87,7 @@ const Index = ({ posts = [], preview, categories, months }) => {
   posts.sort((a, b) => b.Date - a.Date)
 
   const [showPosts, setShowPosts] = useState(posts)
-  const [inputValue, setInputValue] = useState()
+  const [inputValue, setInputValue] = useState<string | null>()
 
   // カテゴリー絞り込み
   const selectCategory = (category) => {
@@ -97,6 +97,8 @@ const Index = ({ posts = [], preview, categories, months }) => {
       const selectedPosts = posts.filter((post) => post.Category === category)
       setShowPosts(selectedPosts)
     }
+
+    setInputValue('')
 
     window.scrollTo({
       top: 0,
