@@ -1,6 +1,10 @@
 notion-blogをベースに作成した個人ブログです。
 <br>
-https://notion-blog.vercel.app/
+notion-blog：https://notion-blog.vercel.app/
+<br>
+<br>
+デプロイURL：https://hinako-blog.vercel.app/blog
+解説記事：https://qiita.com/hinako_n/items/4daf737e08a75c01a869
 
 ## Credits
 
