@@ -1,4 +1,4 @@
-notion-blogをベースに作成した個人ブログです。
+notion-blogをベースに作成した個人ブログサイトです。
 <br><br>
 notion-blog<br>
 https://notion-blog.vercel.app/
